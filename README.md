@@ -1,2 +1,2 @@
 # SQL-Project
-Analysis of Literacy rate in India
+A deepdive into Banking Analytics
