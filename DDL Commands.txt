@@ -1,4 +1,4 @@
-# Create, Alter, drop, Truncate
+# Create, Alter, Drop, Truncate
 
 /* Select Commands
 select * from BRANCH;
