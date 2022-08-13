@@ -17,6 +17,40 @@ commit;
 insert into branch values ('Delhi', 'BR3');
 
 
-rollback; -> database goes back to last commit data, i.e. only till there is saved.
+rollback; -> database goes back to last commit data i.e. only till there is saved.
+
+
+--rollback; -> similar to undo. Removes the uncommitted transactions from the current session.
+
+--commit; -> permanently saves the changes to the DB.
+
+
+
+-- SAVEPOINT command:
+select * from TRANSACTIONS;
+select * from accounts;
+
+insert into TRANSACTIONS (trns_type,TRNS_DATE,acc_no,acc_type,amount,status)
+values ('Online Payment', current_date, 12345,'Savings', 100, 'Success');
+
+insert into TRANSACTIONS (trns_type,TRNS_DATE,acc_no,acc_type,amount,status)
+values ('Online Payment', current_date, 12345,'Loan', 500, 'Failure');
+
+savepoint after_2_trns;
+
+insert into TRANSACTIONS (trns_type,TRNS_DATE,acc_no,acc_type,amount,status)
+values ('Online Payment', current_date, 12345,'Loan', 200, default);
+
+savepoint after_all_trns;
+
+insert into accounts values (999, 'Savings', 'C1', 9000);
+
+savepoint after_ins_acc;
+
+insert into accounts values (888, 'Savings', 'C1', 9000);
+
+rollback;
+rollback to after_all_trns;
+rollback to after_2_trns;
 
 
