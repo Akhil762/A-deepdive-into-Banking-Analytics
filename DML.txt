@@ -201,4 +201,9 @@ insert into EMPLOYEES (emp_id, first_name, last_name, salary, branch_code) value
 insert into EMPLOYEES (emp_id, first_name, last_name, salary, branch_code) values ('E10', 'Meredith', 'Raincin', 92000, 'BR1');
 
 
+--Update
+Update Employees set firts_name='Akhil' where Id='E1'
 
+
+--Delete
+Delete from Employees where Id='E1'
