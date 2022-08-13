@@ -39,6 +39,8 @@ CREATE TABLE accounts
 	constraint fk_acc foreign key (CUST_ID) references customers(CUSTOMER_ID)
 );
 
+/*  Composite Primary key can also be created as - constraint pk_trns primary key(trns_id,TRNS_TYPE) for below txn table  */
+
 
 
 CREATE TABLE transactions
@@ -51,7 +53,8 @@ CREATE TABLE transactions
 	STATUS			varchar(10)
 );
 
-/* Check can also be used as Check (Age>0) if there is age column
+/* Check can also be used as Check (Age>0) if there is age column   */
+
 
 
 CREATE TABLE EMPLOYEES
