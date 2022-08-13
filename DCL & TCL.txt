@@ -1,0 +1,10 @@
+/* DCL Commands - Grant and Revoke  */
+
+
+
+
+
+
+
+
+/* TCL Commands - Commit, Rollback and Savepoint - used with DML commands only  */
