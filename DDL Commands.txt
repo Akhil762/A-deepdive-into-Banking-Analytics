@@ -1,0 +1,96 @@
+# Create, Alter, drop, Truncate
+
+/* Select Commands
+select * from BRANCH;
+select * from CUSTOMERS;
+select * from ACCOUNTS;
+select * from TRANSACTIONS;
+select * from EMPLOYEES;
+*/
+
+CREATE TABLE BRANCH
+(
+	BRANCH_NAME	 	varchar(50),
+	BRANCH_CODE		varchar(10) unique
+);
+
+
+
+CREATE TABLE customers
+(
+	CUSTOMER_ID		varchar(20) primary key,
+	FIRST_NAME		varchar(50) not null,
+	LAST_NAME		varchar(50) not null,
+	PHONE_NO		bigint,
+	ADDRESS			varchar(50),
+	DOB				date,
+	IS_ACTIVE		VARCHAR(5)
+);
+
+
+
+CREATE TABLE accounts
+(
+	ACCOUNT_NUMBER	bigint,
+	ACC_TYPE		varchar(30) check ( ACC_TYPE in ('Loan', 'Saving')),
+	CUST_ID			varchar(20),
+	BALANCE			float,
+	constraint pk_acc primary key (account_number),
+	constraint fk_acc foreign key (CUST_ID) references customers(CUSTOMER_ID)
+);
+
+
+
+CREATE TABLE transactions
+(
+	TRNS_ID			bigserial primary key,
+	TRNS_TYPE		varchar(20) check (TRNS_TYPE in ('wire transfer', 'card transaction', 'net banking')),
+	TRNS_DATE		date,
+	ACC_NUMBER		bigint references accounts(account_number),
+	AMOUNT			float,
+	STATUS			varchar(10)
+);
+
+
+
+CREATE TABLE EMPLOYEES
+(
+	EMP_ID			varchar(20) primary key,
+	FIRST_NAME		varchar(50) not null,
+	LAST_NAME		varchar(50) not null,
+	SALARY			float ,
+	BRANCH_CODE		varchar(10) references branch(branch_code)
+);
+
+
+/* alter commands */
+
+--add a column
+--remove a column
+--rename column
+--rename table name
+--modify a data type
+
+alter table customer add state varchar(20);
+alter table customer drop column state;
+alter table customer rename column CUSTOMER_ID to cust_id;
+alter table customer rename to customer_new;
+alter table customer_new alter column phone_no type int;
+
+
+/* Drop commands */
+
+drop table EMPLOYEES;
+drop table branch;
+drop table TRANSACTIONS;
+drop table ACCOUNTS;
+drop table CUSTOMERS;
+
+
+/* truncate commands */
+
+truncate table EMPLOYEES;
+truncate table branch;
+truncate table TRANSACTIONS;
+truncate table ACCOUNTS;
+truncate table CUSTOMERS;
