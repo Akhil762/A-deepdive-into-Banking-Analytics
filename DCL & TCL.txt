@@ -8,3 +8,15 @@
 
 
 /* TCL Commands - Commit, Rollback and Savepoint - used with DML commands only  */
+
+insert into branch values ('Bangalore', 'BR1');
+commit;
+
+insert into branch values ('Mumbai', 'BR2');
+commit;
+insert into branch values ('Delhi', 'BR3');
+
+
+rollback; -> database goes back to last commit data, i.e. only till there is saved.
+
+
