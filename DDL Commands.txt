@@ -51,6 +51,7 @@ CREATE TABLE transactions
 	STATUS			varchar(10)
 );
 
+/* Check can also be used as Check (Age>0) if there is age column
 
 
 CREATE TABLE EMPLOYEES
