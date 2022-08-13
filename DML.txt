@@ -2,7 +2,7 @@
 -- Dataset generated using below website:
 -- https://www.mockaroo.com/
 
-
+--INSERT
 insert into branch values ('Bangalore', 'BR1');
 insert into branch values ('Mumbai', 'BR2');
 insert into branch values ('Delhi', 'BR3');
@@ -201,9 +201,14 @@ insert into EMPLOYEES (emp_id, first_name, last_name, salary, branch_code) value
 insert into EMPLOYEES (emp_id, first_name, last_name, salary, branch_code) values ('E10', 'Meredith', 'Raincin', 92000, 'BR1');
 
 
---Update
-Update Employees set firts_name='Akhil' where Id='E1'
+--UPDATE
+Update Employees set firts_name='Akhil' where Id='E1';
+
+update transactions
+set amount = 999, trns_date = to_date('01-01-2020', 'dd-mm-yyyy')
+where trns_id = 1;
 
 
---Delete
+--DELETE
 Delete from Employees where Id='E1'
+delete from transactions;
