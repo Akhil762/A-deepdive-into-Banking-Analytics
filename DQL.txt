@@ -1,1 +1,17 @@
+--Case Statement
 
+
+-- Aggregate Functions -> sum, avg, max, min , count 
+
+
+--Joins
+
+
+--Union Operator
+
+
+
+--Subqueries
+
+
+-- Window Functions
