@@ -4,6 +4,10 @@
 -- Aggregate Functions -> sum, avg, max, min , count 
 
 
+
+
+--count(*) includes null vales, count(column) include non null values, count(distinct column) includes non null distinct values 
+
 --Joins
 
 
