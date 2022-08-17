@@ -1,14 +1,107 @@
+--Basic Queries ->Filtering Conditions
+
+1) write a query to fetch trns_id, trns date, amount for net banking trns only.
+
+select t.trns_id, t.trns_date, t.amount trns_amount
+from transactions t
+where trns_type = 'net banking'
+
+2) write a query to fetch employee name and salary whose salary is greater than 50000 and who belong to BR1
+
+select first_name, last_name, salary
+from employees
+where salary > 50000
+and branch_code = 'BR1';
+
+3) fetch employees whose first name starts with J or whose salary is greater than 70000.
+select *
+from employees
+where first_name like 'J%'
+or salary > 70000;
+
+4) fetch accounts with balance in between 3000 to 5000
+select *
+from ACCOUNTS
+where balance between 3000 and 5000;
+
+5) Find customer who did not provide a phone no.
+select *
+from customers
+where phone_no is null;
+
+
+6) Find all the different type of transaction.
+select distinct trns_type, trns_date
+from transactions;
+
+
+7) Sort the employee data as per first name and highest dob.
+
+select * from CUSTOMERS
+order by first_name , dob desc 
+
+8) Fetch the first 5 trns
+
+select * from transactions limit 5;
+
+
+
 --Case Statement
 
+1) find if a given number is even or odd ? Given numbers are 432
+
+select case when 432 % 2 = 1
+                then 'Odd Number'
+            else 'Even Number'
+       end as odd_or_even ;
+       
+ 2) Categorise employees based on their salary.
+[Below 50k is Low salary, between 50k to 70 is medium salary, above 70k is high salary.]
+
+select  (first_name || ' ' || last_name) as full_name
+, case when salary < 50000 then 'Low Salary'
+       when salary between 50000 and 70000 then 'Medium Salary'
+       when salary > 70000 then 'High Salary'
+       else 'STRANGE'
+  end as categories
+from employees;
+
+/*
+select 'tech' || ' ' || 'TFQ' as name;
+select concat('tech', ' TFQ') as name;  */-- Same result
+
+
+     
+       
+       
 
 -- Aggregate Functions -> sum, avg, max, min , count 
 
+1) Identify the total no of wire transfer transactions.
+select count(*)
+from transactions
+where trns_type = 'wire transfer';
 
 
+/* count(*) includes null vales, count(column) include non null values, count(distinct column) includes non null distinct values  */ 
 
---count(*) includes null vales, count(column) include non null values, count(distinct column) includes non null distinct values 
 
 --Joins
+1) Find employees working in Mumbai
+select e.*, b.*
+from employees e
+inner join branch b on b.branch_code = e.branch_code
+where b.branch_name = 'Mumbai';
+
+2) Find total no of successful transactions that belong to inactive customers.
+
+select count(*)
+from customers c
+join accounts a on a.cust_id = c.customer_id
+join transactions t on t.acc_number = a.account_number
+where t.status = 'Success'
+and c.is_active = 'false';
+
 
 
 --Union Operator
@@ -18,4 +111,7 @@
 --Subqueries
 
 
+
 -- Window Functions
+
+
